@@ -18,9 +18,9 @@ string VGTask4(int[] numbers)
 {
     string str_out;
     int max_value = numbers[0];
-    for(int i = 0; i < numbers.Length; i++)
+    for (int i = 0; i < numbers.Length; i++)
     {
-        if( numbers[i] > max_value)
+        if (numbers[i] > max_value)
         {
             max_value = numbers[i];
         }
@@ -34,15 +34,31 @@ string VGTask4(int[] numbers)
 string VGTask6(int number)
 {
     string str_out;
-    if(number%2 == 1)
+    if (number % 2 == 1)
     {
-       str_out = $"Число {number} НЕ является четным"; 
+        str_out = $"Число {number} НЕ является четным";
     }
     else
     {
         str_out = $"Число {number} является четным";
     }
-    
+
+    return str_out;
+}
+//задание 8
+string VGTask8(int number)
+{
+    string str_out = ""; /*почему-то здесь ругается если не присвоить хоть что-то: 
+                          -  Использование локальной переменной "str_out", которой не присвоено значение. [hw]
+                         Хотя в 6-м задании все работает без присвоения после объявления   */
+
+    for (int i = 1; i <= number; i++)
+    {
+        if (i % 2 == 0)
+        {
+            str_out += $"{i} ";
+        }
+    }
     return str_out;
 }
 
@@ -85,7 +101,7 @@ while (true)
         Console.ForegroundColor = ConsoleColor.Green;
         Console.Write("8 ");
         Console.ResetColor();
-        Console.WriteLine("- Задание 8: Программа принимает число и проверяет является ли оно четным. \r\n");
+        Console.WriteLine("- Задание 8: Программа принимает число выводит все четные в диапазоне от 0 до N. \r\n");
         //quit
         Console.ForegroundColor = ConsoleColor.Green;
         Console.Write("q ");
@@ -179,7 +195,7 @@ while (true)
         Console.WriteLine("Программа принимает на вход три числа и выдает максимальное из них. \r\n");
         Console.WriteLine("Введите несколько чисел разделенные пробелами:");
 
-        
+
         while (!input_status)
         {
             input_status = false;
@@ -188,17 +204,17 @@ while (true)
             string[] words = instr.Split(" "); // раскладываем строку на слова
             // проверяем содержат ли слова числа
             int[] input_num_array = new int[words.Length];
-            for(int i = 0; i < words.Length; i++)
+            for (int i = 0; i < words.Length; i++)
             {
                 //Console.WriteLine(words[i]);
-                if(!int.TryParse(words[i], out input_num_array[i]))
+                if (!int.TryParse(words[i], out input_num_array[i]))
                 {
                     input_error_count++;
                 }
             }
-            if(input_error_count == 0)
+            if (input_error_count == 0)
             {
-                input_status=true;
+                input_status = true;
                 Console.WriteLine(VGTask4(input_num_array) + "\r\n");
             }
             else
@@ -239,7 +255,7 @@ while (true)
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("Задание 1");
         Console.ResetColor();
-        Console.WriteLine("Программа принимает на вход два числа и определяет какое число больше. \r\n");
+        Console.WriteLine("Программа принимает число и проверяет является ли оно четным. \r\n");
         Console.WriteLine("Введите число:");
 
         while (!input_status)
@@ -251,7 +267,7 @@ while (true)
             }
             else
             {
-                
+
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(error_mssg);
                 Console.ResetColor();
@@ -277,6 +293,56 @@ while (true)
         else if (userinput == "r")
         {
             task6_enabled = true;
+        }
+
+    }
+    //Задание 8
+    while (task8_enabled)
+    {
+        input_status = false;
+        int num = 0;
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("Задание 1");
+        Console.ResetColor();
+        Console.WriteLine("Программа принимает число выводит все четные в диапазоне от 0 до N. \r\n");
+        Console.WriteLine("Введите число:");
+
+        while (!input_status)
+        {
+            instr = Console.ReadLine();
+            if (int.TryParse(instr, out num) && num > 0)
+            {
+                input_status = true;
+            }
+            else
+            {
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(error_mssg);
+                Console.ResetColor();
+            }
+        }
+
+        Console.WriteLine(VGTask8(num) + "\r\n");
+        Console.WriteLine("Повторить это задание или вернуться в меню?");
+        Console.Write("Повторить  ");
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.Write("r");
+        Console.ResetColor();
+        Console.Write(", меню  ");
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.Write("m");
+        Console.ResetColor();
+        Console.WriteLine(": ");
+        string userinput = Console.ReadLine().ToLower();
+        if (userinput == "m")
+        {
+            task8_enabled = false;
+        }
+        else if (userinput == "r")
+        {
+            task8_enabled = true;
         }
 
     }
