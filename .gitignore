@@ -8,7 +8,7 @@
 # *.cs
 # */bin/*
 # */obj/*
-*.csproj
+# *.csproj
 
 # User-specific files
 *.rsuser
