@@ -17,7 +17,6 @@ string VGTask2(int number_1, int number_2)
 string VGTask4(int[] numbers)
 {
     string str_out;
-    //int max_index = 0;
     int max_value = numbers[0];
     for(int i = 0; i < numbers.Length; i++)
     {
@@ -29,6 +28,21 @@ string VGTask4(int[] numbers)
     }
     str_out = $"Максимальное значение: {max_value}";
 
+    return str_out;
+}
+//задание 6
+string VGTask6(int number)
+{
+    string str_out;
+    if(number%2 == 1)
+    {
+       str_out = $"Число {number} НЕ является четным"; 
+    }
+    else
+    {
+        str_out = $"Число {number} является четным";
+    }
+    
     return str_out;
 }
 
@@ -66,12 +80,12 @@ while (true)
         Console.ForegroundColor = ConsoleColor.Green;
         Console.Write("6 ");
         Console.ResetColor();
-        Console.Write("- Задание 6: Программа принимает на вход два числа и определяет какое число больше. \r\n");
+        Console.Write("- Задание 6: Программа принимает число и проверяет является ли оно четным. \r\n");
         //task 8
         Console.ForegroundColor = ConsoleColor.Green;
         Console.Write("8 ");
         Console.ResetColor();
-        Console.WriteLine("- Задание 8: Программа принимает на вход два числа и определяет какое число больше. \r\n");
+        Console.WriteLine("- Задание 8: Программа принимает число и проверяет является ли оно четным. \r\n");
         //quit
         Console.ForegroundColor = ConsoleColor.Green;
         Console.Write("q ");
@@ -134,7 +148,6 @@ while (true)
 
         Console.WriteLine(VGTask2(num1, num2) + "\r\n");
         Console.WriteLine("Повторить это задание или вернуться в меню?");
-
         Console.Write("Повторить ( ");
         Console.ForegroundColor = ConsoleColor.Green;
         Console.Write("r");
@@ -155,7 +168,6 @@ while (true)
         }
 
     }
-
     //Задание 4
     while (task4_enabled)
     {
@@ -170,32 +182,32 @@ while (true)
         
         while (!input_status)
         {
-            int input_num_array[];
+            input_status = false;
             instr = Console.ReadLine();
-            bool input_error = false;
+            int input_error_count = 0;//Счетчик ошибок в вводе
             string[] words = instr.Split(" "); // раскладываем строку на слова
-
-
-            /*
-            if (instr.IndexOf(" ") == -1 || !int.TryParse(instr.Substring(0, instr.IndexOf(" ")), out num1) || !int.TryParse(instr.Substring(instr.IndexOf(" ") + 1, instr.Length - instr.IndexOf(" ") - 1), out num2))
+            // проверяем содержат ли слова числа
+            int[] input_num_array = new int[words.Length];
+            for(int i = 0; i < words.Length; i++)
+            {
+                //Console.WriteLine(words[i]);
+                if(!int.TryParse(words[i], out input_num_array[i]))
+                {
+                    input_error_count++;
+                }
+            }
+            if(input_error_count == 0)
+            {
+                input_status=true;
+                Console.WriteLine(VGTask4(input_num_array) + "\r\n");
+            }
+            else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(error_mssg);
                 Console.ResetColor();
             }
-            else
-            {
-                input_status = true;
-            }
-            */
-            // проверяем содержат ли слова числа
-            for(int i = 0; i < words.Length && !input_error; i++)
-            {
-                //Console.WriteLine(words[i]);
-                input_error = !int.TryParse(words[i], out input_num_array[i]);
-            }
         }
-        Console.WriteLine(VGTask2(num1, num2) + "\r\n");
         Console.WriteLine("Повторить это задание или вернуться в меню?");
 
         Console.Write("Повторить ( ");
@@ -218,12 +230,54 @@ while (true)
         }
 
     }
+    //Задание 6
+    while (task6_enabled)
+    {
+        input_status = false;
+        int num = 0;
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("Задание 1");
+        Console.ResetColor();
+        Console.WriteLine("Программа принимает на вход два числа и определяет какое число больше. \r\n");
+        Console.WriteLine("Введите число:");
+
+        while (!input_status)
+        {
+            instr = Console.ReadLine();
+            if (int.TryParse(instr, out num))
+            {
+                input_status = true;
+            }
+            else
+            {
+                
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(error_mssg);
+                Console.ResetColor();
+            }
+        }
+
+        Console.WriteLine(VGTask6(num) + "\r\n");
+        Console.WriteLine("Повторить это задание или вернуться в меню?");
+        Console.Write("Повторить  ");
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.Write("r");
+        Console.ResetColor();
+        Console.Write(", меню  ");
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.Write("m");
+        Console.ResetColor();
+        Console.WriteLine(": ");
+        string userinput = Console.ReadLine().ToLower();
+        if (userinput == "m")
+        {
+            task6_enabled = false;
+        }
+        else if (userinput == "r")
+        {
+            task6_enabled = true;
+        }
+
+    }
 }
-
-
-
-//int.TryParse(str.Substring(str.IndexOf(" ")+1, str.Length-str.IndexOf(" ")), out num2);
-//tmp = str.Substring(str.IndexOf(" ")+1, str.Length-str.IndexOf(" ")-1);
-//index = num1;
-//Console.WriteLine(num1);
-//Console.WriteLine(num2);
