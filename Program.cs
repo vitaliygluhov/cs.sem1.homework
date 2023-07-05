@@ -170,7 +170,9 @@ while (true)
         
         while (!input_status)
         {
+            int input_num_array[];
             instr = Console.ReadLine();
+            bool input_error = false;
             string[] words = instr.Split(" "); // раскладываем строку на слова
 
 
@@ -187,9 +189,10 @@ while (true)
             }
             */
             // проверяем содержат ли слова числа
-            for(int i = 0; i < words.Length; i++)
+            for(int i = 0; i < words.Length && !input_error; i++)
             {
                 //Console.WriteLine(words[i]);
+                input_error = !int.TryParse(words[i], out input_num_array[i]);
             }
         }
         Console.WriteLine(VGTask2(num1, num2) + "\r\n");
