@@ -24,7 +24,6 @@ string VGTask4(int[] numbers)
         {
             max_value = numbers[i];
         }
-
     }
     str_out = $"Максимальное значение: {max_value}";
 
@@ -142,7 +141,7 @@ while (true)
         input_status = false;
         Console.Clear();
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("Задание 1");
+        Console.WriteLine("Задание 2");
         Console.ResetColor();
         Console.WriteLine("Программа принимает на вход два числа и определяет какое число больше. \r\n");
         Console.WriteLine("Введите два числа разделенные пробелом:");
@@ -164,11 +163,11 @@ while (true)
 
         Console.WriteLine(VGTask2(num1, num2) + "\r\n");
         Console.WriteLine("Повторить это задание или вернуться в меню?");
-        Console.Write("Повторить ( ");
+        Console.Write("Повторить ");
         Console.ForegroundColor = ConsoleColor.Green;
         Console.Write("r");
         Console.ResetColor();
-        Console.Write(" ), меню  ");
+        Console.Write(" , меню  ");
         Console.ForegroundColor = ConsoleColor.Green;
         Console.Write("m");
         Console.ResetColor();
@@ -190,10 +189,10 @@ while (true)
         input_status = false;
         Console.Clear();
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("Задание 1");
+        Console.WriteLine("Задание 4");
         Console.ResetColor();
-        Console.WriteLine("Программа принимает на вход три числа и выдает максимальное из них. \r\n");
-        Console.WriteLine("Введите несколько чисел разделенные пробелами:");
+        Console.WriteLine("Программа принимает на вход несколько чисел и выдает максимальное из них. \r\n");
+        Console.WriteLine("Введите несколько чисел разделенные пробелами (пример: 4 56 32 5):");
 
 
         while (!input_status)
@@ -226,11 +225,11 @@ while (true)
         }
         Console.WriteLine("Повторить это задание или вернуться в меню?");
 
-        Console.Write("Повторить ( ");
+        Console.Write("Повторить ");
         Console.ForegroundColor = ConsoleColor.Green;
         Console.Write("r");
         Console.ResetColor();
-        Console.Write(" ), меню  ");
+        Console.Write(", меню  ");
         Console.ForegroundColor = ConsoleColor.Green;
         Console.Write("m");
         Console.ResetColor();
@@ -253,7 +252,7 @@ while (true)
         int num = 0;
         Console.Clear();
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("Задание 1");
+        Console.WriteLine("Задание 6");
         Console.ResetColor();
         Console.WriteLine("Программа принимает число и проверяет является ли оно четным. \r\n");
         Console.WriteLine("Введите число:");
@@ -303,9 +302,9 @@ while (true)
         int num = 0;
         Console.Clear();
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("Задание 1");
+        Console.WriteLine("Задание 8");
         Console.ResetColor();
-        Console.WriteLine("Программа принимает число выводит все четные в диапазоне от 0 до N. \r\n");
+        Console.WriteLine("Программа принимает число и выводит все четные в диапазоне от 0 до N. \r\n");
         Console.WriteLine("Введите число:");
 
         while (!input_status)
